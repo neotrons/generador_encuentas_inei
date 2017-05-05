@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'nested_admin',
     'formbuilds',
+    'surveys',
 ]
 
 MIDDLEWARE = [

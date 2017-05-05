@@ -13,7 +13,7 @@ class Form(models.Model):
     valid_from = models.DateField(blank=False, verbose_name="Válido desde",
                                   help_text="Indica desde cuando aparecera el formulario de registro",
                                   default=datetime.datetime.today)
-    valid_to = models.DateField(blank=False, verbose_name="Válido hasta",
+    valid_to = models.DateField(blank=True, null=True, default=None, verbose_name="Válido hasta",
                                 help_text="Indica hasta cuando aparecera el formulario de registro")
     '''
     promo = models.OneToOneField(Promo, verbose_name="Promoción",
@@ -43,16 +43,24 @@ class Form(models.Model):
     def get_all_fields(self):
         return self.field_set.all()
 
+    def get_all_blocks(self):
+        return self.block_set.all().order_by('id')
+
+
 
 class Block(models.Model):
     title = models.CharField(max_length=255)
     help_text = models.CharField(max_length=255, default="", blank=True, null=True, verbose_name="Texto de ayuda")
     form = models.ForeignKey(Form)
+    is_question = models.BooleanField(default=True)
     created_date = models.DateTimeField(auto_now_add=True)
     modified_date = models.DateTimeField(auto_now=True)
 
     def __unicode__(self):
         return self.title
+
+    def get_all_fieldset(self):
+        return self.fieldset_set.all()
 
 
 class Fieldset(models.Model):

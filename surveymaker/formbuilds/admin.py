@@ -34,5 +34,5 @@ class BlockInline(NestedStackedInline):
 
 @admin.register(Form)
 class FormAdmin(NestedModelAdmin):
-    list_display = ('title', 'valid_from', 'valid_to',)
+    list_display = ('id', 'title', 'valid_from', 'valid_to',)
     inlines = [BlockInline]

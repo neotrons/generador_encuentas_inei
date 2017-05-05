@@ -1,0 +1,23 @@
+{% extends "admin/change_form.html" %}
+
+{% load i18n %}
+{% block object-tools-items %}
+    <li>
+        <a href="/admin/formbuilds/form/{{ original.form.id }}/change/">
+            <i class="icon-edit icon-alpha75"></i>
+
+            <b>Editar Formulario</b>
+        </a>
+
+    </li>
+    <!--
+    <li>
+        <a href="/admin/promos/layout/{{ original.layout.id }}/change/">
+            <i class="icon-adjust icon-alpha75"></i>
+            <b>Editar Layout</b>
+        </a>
+    </li>
+
+    {{ block.super }}
+    -->
+{% endblock %}

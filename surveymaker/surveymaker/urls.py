@@ -20,4 +20,5 @@ urlpatterns = [
     url(r'^grappelli/', include('grappelli.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^nested_admin/', include('nested_admin.urls')),
+    url(r'^encuesta/', include('surveys.urls', namespace='encuesta')),
 ]
