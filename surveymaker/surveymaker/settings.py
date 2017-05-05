@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'nested_admin',
     'formbuilds',
     'surveys',
+    'participants',
 ]
 
 MIDDLEWARE = [

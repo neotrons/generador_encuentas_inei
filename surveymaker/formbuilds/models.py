@@ -41,7 +41,15 @@ class Form(models.Model):
         pass
 
     def get_all_fields(self):
-        return self.field_set.all()
+        blocks = self.get_all_blocks()
+        allfields = []
+        for block in blocks:
+            fieldsets = block.get_all_fieldset()
+            for fieldset in fieldsets:
+                fields = fieldset.get_all_fields()
+                allfields = allfields + list(fields)
+
+        return allfields
 
     def get_all_blocks(self):
         return self.block_set.all().order_by('id')
@@ -73,6 +81,9 @@ class Fieldset(models.Model):
     def __unicode__(self):
         return self.title
 
+    def get_all_fields(self):
+        return self.field_set.all().order_by('id')
+
 
 # Field: Son los campos que se usaran para todos los formularios
 class Field(MetaField):
@@ -97,3 +108,7 @@ class Option(MetaSubfield):
     class Meta:
         verbose_name = "Opción"
         verbose_name_plural = "Opciones"
+
+
+class Upload(models.Model):
+    file = models.FileField(blank=True, null=True, default=None)

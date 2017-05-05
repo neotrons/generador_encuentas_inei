@@ -1,0 +1,100 @@
+{% extends 'surveys/template_1/base.html' %}
+{% load staticfiles %}
+{% load poll_extras %}
+{% block page %}
+<div class="panel-heading">
+    <div class="row">
+        <div class="col-md-3">
+            <img src="{% static 'custom' %}/images/logoinei.png" style="width: 150px; ">
+        </div>
+        <div class="col-md-8">
+            <h2 style="width: 100%; margin-top: 40px;">{{ objform.title }}</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-5">
+            <h6 style="text-align: center; border: 1px solid #000; padding: 15px;">{{ objform.subtitle }}</h6>
+        </div>
+    </div>
+</div>
+
+{% for field in form %}
+    <br />
+{% if field|field_type == 'RadioSelect' %}
+<div class="promo-ec-template-layout-half">
+    <div class="promo-ec-template-module-form-item-box radio">
+      <label {% if field.field.required %} class="required"{% endif %} for="{{ field.id_for_label }}">
+          {{ field.label }}
+      </label>
+      <div class="promo-ec-template-layout-full">
+        {% for radio in field %}
+        <div class="promo-ec-template-layout-half">
+          {{ radio.tag }}
+          <label for="{{ radio.id_for_label }}">
+              <span></span>{{ radio.choice_label }}
+          </label>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+{% elif field|field_type == 'Select' %}
+<div class="promo-ec-template-layout-half">
+    <div class="promo-ec-template-module-form-item-box select">
+      <label {% if field.field.required %} class="required"{% endif %}>
+          {{ field.label }}
+      </label>
+      <div class="wrap-select">
+        {{ field }}
+          <span class="arrow"></span>
+      </div>
+    </div>
+  </div>
+{% elif field|field_type == 'CheckboxInput' %}
+<div class="promo-ec-template-layout-full conditions">
+  <div class="promo-ec-template-module-form-item-box checkbox">
+    <div class="promo-ec-template-layout-full">
+      {{ field }}
+      <label for="{{ field.id_for_label }}" {% if field.field.required %}class="required"{% endif %}>
+          <span></span> {{ field.label }}
+      </label>
+    </div>
+  </div>
+</div>
+{% elif field|field_type == 'Textarea' %}
+
+<li class="poll-item ui-form-row block-{{ field.name }}">
+
+    <label for="{{ field.id_for_label }}" class="lbl-field">
+        {{ field.label }}{% if field.field.required %} *{% endif %}:
+    </label>
+    <br />
+
+    {{ field }}
+
+    {% if field.errors%}
+    <div class="ui-form-error-message">
+        {% for error in field.errors %}{{ error }}{% endfor %}
+    </div>
+    {% endif %}
+</li>
+{% else %}
+
+<li class="poll-item ui-form-row">
+
+    <label for="{{ field.id_for_label }}" class="lbl-field">
+        {{ field.label }}{% if field.field.required %} *{% endif %}:
+    </label>
+    <br />
+    {{ field }}
+
+    {% if field.errors%}
+    <div class="ui-form-error-message">
+        {% for error in field.errors %}{{ error }}{% endfor %}
+    </div>
+    {% endif %}
+</li>
+{% endif %}
+{% endfor %}
+{% endblock %}

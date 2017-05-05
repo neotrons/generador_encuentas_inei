@@ -1,5 +1,6 @@
 {% extends 'surveys/template_2/base.html' %}
 {% load staticfiles %}
+{% load poll_extras %}
 {% block page %}
 <div class="panel-heading">
     <div class="row">
@@ -7,19 +8,19 @@
             <img src="{% static 'custom' %}/images/logoinei.png" style="width: 150px; ">
         </div>
         <div class="col-md-8">
-            <h2 style="width: 100%; margin-top: 40px;">{{ form.title }}</h2>
+            <h2 style="width: 100%; margin-top: 40px;">{{ objform.title }}</h2>
         </div>
     </div>
     <div class="row">
         <div class="col-md-3"></div>
         <div class="col-md-5">
-            <h6 style="text-align: center; border: 1px solid #000; padding: 15px;">{{ form.subtitle }}</h6>
+            <h6 style="text-align: center; border: 1px solid #000; padding: 15px;">{{ objform.subtitle }}</h6>
         </div>
     </div>
 </div>
 
 <div class="container-fluid" style="margin-top: 50px;">
-    {% for block in form.get_all_blocks %}
+    {% for block in objform.get_all_blocks %}
     <div class="row">
         <div class="col-lg-12">
             <b>{{ block.help_text }}</b>
@@ -49,7 +50,11 @@
                             {% endfor %}
                         </tbody>
                     </table>
+                    {% else %}
+
                     {% endif %}
+
+
                 </div>
             </div>
         </div>
