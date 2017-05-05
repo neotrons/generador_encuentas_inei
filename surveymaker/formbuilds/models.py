@@ -45,21 +45,31 @@ class Form(models.Model):
 
 
 class Block(models.Model):
-    legend = models.CharField(max_length=255)
+    title = models.CharField(max_length=255)
+    help_text = models.CharField(max_length=255, default="", blank=True, null=True, verbose_name="Texto de ayuda")
+    form = models.ForeignKey(Form)
     created_date = models.DateTimeField(auto_now_add=True)
     modified_date = models.DateTimeField(auto_now=True)
+
+    def __unicode__(self):
+        return self.title
 
 
 class Fieldset(models.Model):
     title = models.CharField(max_length=255)
+    show = models.BooleanField(default=True)
     block = models.ForeignKey(Block)
     created_date = models.DateTimeField(auto_now_add=True)
     modified_date = models.DateTimeField(auto_now=True)
 
+    def __unicode__(self):
+        return self.title
+
 
 # Field: Son los campos que se usaran para todos los formularios
 class Field(MetaField):
-    form = models.ForeignKey(Form)
+    form = models.ForeignKey(Form, blank=True, null=True)
+    fieldset = models.ForeignKey(Fieldset, blank=True, null=True, default=None)
     help_text = models.CharField(max_length=255, default="", blank=True, null=True, verbose_name="Texto de ayuda")
 
     def __unicode__(self):

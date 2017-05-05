@@ -1,2 +1,4 @@
 Django==1.10.7
 psycopg2==2.7.1
+django-nested-admin==3.0.17
+django-grappelli==2.9.1

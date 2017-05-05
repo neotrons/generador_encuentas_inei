@@ -14,6 +14,12 @@ class MetaField(models.Model):
     TEXTAREA = '7'
     BIRTHDAY = '8'
     IMAGE_CROP = '9'
+    DEPARTAMENTO = '10'
+    PROVINCIA = '11'
+    DISTRITO = '12'
+    EMAIL = '13'
+    PAIS = '14'
+
 
     MetaFields_type = (
         (TEXT, 'Texto'),
@@ -24,7 +30,12 @@ class MetaField(models.Model):
         (FILE_UPLOAD, 'Cargar documento'),
         (TEXTAREA, 'Textarea'),
         (BIRTHDAY, 'Año-Mes-Día'),
-        (IMAGE_CROP, 'Recortar Imagen')
+        (IMAGE_CROP, 'Recortar Imagen'),
+        (PAIS, 'Ubigeo:Pais'),
+        (DEPARTAMENTO, 'Ubigeo:Departamento'),
+        (PROVINCIA, 'Ubigeo:Provincia'),
+        (DISTRITO, 'Ubigeo:Distrito'),
+        (EMAIL, 'e-mail'),
     )
 
     type = models.CharField(choices=MetaFields_type, default=MetaFields_type[0], max_length=2)
