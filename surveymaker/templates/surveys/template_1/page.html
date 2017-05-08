@@ -20,7 +20,7 @@
 </div>
 
 {% for field in form %}
-    <br />
+<div class="form-group">
 {% if field|field_type == 'RadioSelect' %}
 <div class="promo-ec-template-layout-half">
     <div class="promo-ec-template-module-form-item-box radio">
@@ -96,5 +96,6 @@
     {% endif %}
 </li>
 {% endif %}
+</div>
 {% endfor %}
 {% endblock %}

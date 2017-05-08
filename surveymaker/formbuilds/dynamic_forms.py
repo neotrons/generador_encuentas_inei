@@ -10,13 +10,16 @@ class DynamicForm(ModelForm):
     CLASS_CORRECT = "succes_opc"
     CLASS_INCORRECT = "error_opc"
 
+
     class Meta:
         abstract = True
 
     # Este metodo altera el comportamiento normal del constructor
     def __init__(self, *args, **kwargs):
-        fields = kwargs.pop('fields')  # Relaciona el Formulario a mostrar y los campos del participante
+        CLASS_FIELD = 'form-control'
 
+        fields = kwargs.pop('fields')  # Relaciona el Formulario a mostrar y los campos del participante
+        self.fieldsets = {}
         super(DynamicForm, self).__init__(*args, **kwargs)  # Crea el objeto
 
         # Esta parte sirve para crear los campos dinamicos, que seran renderizados posteriormente
@@ -25,7 +28,8 @@ class DynamicForm(ModelForm):
             extra_attr = {}
             if field.type == Field.BOOLEAN:  # Agrega un campo boolean
                 self.fields[id] = forms.BooleanField(label=field.content, widget=forms.CheckboxInput(
-                    attrs={'class': 'text-field '.format(field.label)}))
+                    attrs={'class': ' text-field '.format(field.label)}))
+
 
             elif field.type == Field.RADIUS:  # Agrega un campo radio
                 a = []
@@ -33,7 +37,7 @@ class DynamicForm(ModelForm):
                 for subfield in choices:
                     a.append((subfield.content, subfield.content))
                 self.fields[id] = forms.ChoiceField(label=field.content, choices=a,
-                                                    widget=forms.RadioSelect(attrs={'class': 'opt-select'}))
+                                                    widget=forms.RadioSelect())
 
             elif field.type == Field.MULTIPLE:  # Agrega un campo de Seleccion Multiple
                 a = []
@@ -48,25 +52,26 @@ class DynamicForm(ModelForm):
                 choices = field.option_set.all() if hasattr(field, 'option_set') else field.field.alternative_set.all()
                 for subfield in choices:
                     a.append((subfield.content, subfield.content))  # subfield.label
-                self.fields[id] = forms.ChoiceField(label=field.content, choices=a, widget=forms.Select(attrs={'class': 'text-field select-op'}))
+                self.fields[id] = forms.ChoiceField(label=field.content, choices=a, widget=forms.Select(attrs={'class': CLASS_FIELD}))
 
             elif field.type == Field.FILE_UPLOAD:
                 self.fields[id] = forms.FileField(label=field.content,
                                                   widget=forms.ClearableFileInput(
-                                                      attrs={'class': 'file_inp_hide upload-input'}), help_text=field.help_text
+                                                      attrs={'class': CLASS_FIELD}), help_text=field.help_text
                                                   )
 
             elif field.type == Field.TEXTAREA:
-                self.fields[id] = forms.CharField(label=field.content, widget=forms.Textarea())
+                self.fields[id] = forms.CharField(label=field.content, widget=forms.Textarea(attrs={'class': CLASS_FIELD}))
 
             elif field.type == Field.BIRTHDAY:
-                self.fields[id] = forms.DateField(label=field.content, widget=forms.SelectDateWidget(attrs={'class': 'text-field select-santo'},
+                self.fields[id] = forms.DateField(label=field.content, widget=forms.SelectDateWidget(attrs={'class': CLASS_FIELD},
                                                 empty_label=("Día", "Mes", "Año",), years=list(range(2016, 1915, -1))))
 
             else:  # Por defecto agrega un campo de texto
-                self.fields[id] = forms.CharField(label=field.content, widget=forms.TextInput(attrs={'class': 'text-field'}))
+                self.fields[id] = forms.CharField(label=field.content, widget=forms.TextInput(attrs={'class': CLASS_FIELD}))
 
             try:
+
                 attrs = json.loads(field.custom_attr)
                 for attr in attrs:
                     try:
@@ -78,6 +83,7 @@ class DynamicForm(ModelForm):
                 pass
 
             self.fields[id].required = True if field.required else False
+            self.fieldsets[id] = field.fieldset_id
 
     # metodo usado para almacenar los campos en formato json, solo los custom
     def storage_json(self, obj=None):

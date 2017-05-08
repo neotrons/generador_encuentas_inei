@@ -26,7 +26,19 @@ class SurveyView(FormView):
         survey = self.kwargs.get('survey')
         context['survey'] = survey
         context['objform'] = survey.form
-        #context['form'] = survey.form
+        formfieldsets = {}
+        fieldsets = context['form'].demo_fields()
+        listname = []
+        for field in context['form']:
+            idfieldset = fieldsets[field.name]
+            if not(idfieldset in formfieldsets):
+                formfieldsets[idfieldset] = []
+            if not(field.name in listname):
+                formfieldsets[idfieldset].append(field)
+                listname.append(field.name)
+
+        context['formfieldsets'] = formfieldsets
+        print (listname)
         return context
 
     def get_form(self, form_class=None):

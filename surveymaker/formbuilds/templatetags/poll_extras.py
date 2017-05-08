@@ -10,3 +10,8 @@ def field_type(field):
     field_name = field.field.__class__.__name__
     widget = field.field.widget.__class__.__name__
     return widget
+
+
+@register.filter(name='get_item')
+def get_item(dictionary, key):
+    return dictionary.get(key)

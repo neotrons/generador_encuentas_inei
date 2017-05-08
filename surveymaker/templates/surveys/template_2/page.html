@@ -33,7 +33,7 @@
                         <thead>
                             <tr>
                                 <th>N°</th>
-                                <th>PREGUNTAS</th>
+                                <th style="max-width: 400px;">PREGUNTAS</th>
                                 <th>CATEGORÍAS Y CÓDIGOS</th>
                                 <th>PASE A</th>
                             </tr>
@@ -46,14 +46,50 @@
                                         <h6 style="padding: 0px; margin: 0px;">{{ fieldset.title }}</h6>
                                     </td>
                                 </tr>
+                                {% with argfield=formfieldsets|get_item:fieldset.id %}
+                                {% for field in argfield %}
+                                <tr>
+                                    <td>dsd</td>
+                                    <td style="max-width: 400px;"><b>{{ field.label }}</b></td>
+                                    <td>
+                                        {{ field }}
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                {% endfor %}
+                                {% endwith %}
                                 {% endif %}
                             {% endfor %}
                         </tbody>
                     </table>
                     {% else %}
+                        {% for fieldset in block.get_all_fieldset %}
+                            {% with argfield=formfieldsets|get_item:fieldset.id %}
+                                {% for field in argfield %}
+                                    <div class="form-group">
+                                        {% if field|field_type == 'Select' %}
+                                            <div class="col-lg-10">
+                                                <label class="control-label">
+                                                    {{ field.label }}
+                                                </label>
+                                                {{ field }}
+                                            </div>
+                                        {% else %}
+                                            <div class="col-lg-10">
+                                                <label class="control-label">
+                                                    {{ field.label }}
+                                                </label>
+                                                {{ field }}
+                                            </div>
+                                        {% endif %}
+
+
+                                    </div>
+                                {% endfor %}
+                            {% endwith %}
+                        {% endfor %}
 
                     {% endif %}
-
 
                 </div>
             </div>

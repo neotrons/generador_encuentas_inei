@@ -15,8 +15,11 @@ class ParticipantForm(DynamicForm):
         kwargs['fields'] = self.form.get_all_fields()
 
         super(ParticipantForm, self).__init__(*args, **kwargs)
+
+        '''
         for field in self.fields:
             self.fields[field] = self.add_extra_attr(self.fields[field])
+        '''
 
     def save(self, *args, **kwargs):
         super(ParticipantForm, self).save(*args, **kwargs)
@@ -24,3 +27,6 @@ class ParticipantForm(DynamicForm):
     def is_valid(self):
         self.instance.form = self.form
         return super(ParticipantForm, self).is_valid()
+
+    def demo_fields(self):
+        return self.fieldsets
