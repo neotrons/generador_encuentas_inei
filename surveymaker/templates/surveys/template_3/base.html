@@ -1,0 +1,371 @@
+{% load  staticfiles %}<!DOCTYPE html>
+<html lang="es-PE">
+	<head>
+		<meta charset="utf-8">
+		<!--<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">-->
+
+		<title> LGBTI 2017 </title>
+		<meta name="description" content="">
+		<meta name="author" content="">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<!-- Basic Styles -->
+		<link rel="stylesheet" type="text/css" media="screen" href="{% static 'templates' %}/3/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" media="screen" href="{% static 'templates' %}/3/css/font-awesome.min.css">
+
+		<!-- SmartAdmin Styles : Caution! DO NOT change the order -->
+		<link rel="stylesheet" type="text/css" media="screen" href="{% static 'templates' %}/3/css/smartadmin-production-plugins.min.css">
+		<link rel="stylesheet" type="text/css" media="screen" href="{% static 'templates' %}/3/css/smartadmin-production.min.css">
+		<link rel="stylesheet" type="text/css" media="screen" href="{% static 'templates' %}/3/css/smartadmin-skins.min.css">
+
+		<!-- SmartAdmin RTL Support  -->
+		<link rel="stylesheet" type="text/css" media="screen" href="{% static 'templates' %}/3/css/smartadmin-rtl.min.css">
+		<link rel="stylesheet" type="text/css" media="screen" href="{% static 'templates' %}/3/css/magnific-popup.css">
+
+
+		<!-- We recommend you use "your_style.css" to override SmartAdmin
+		     specific styles this will also ensure you retrain your customization with each SmartAdmin update.
+		<link rel="stylesheet" type="text/css" media="screen" href="css/your_style.css"> -->
+
+		<!-- Demo purpose only: goes with demo.js, you can delete this css when designing your own WebApp -->
+		<link rel="stylesheet" type="text/css" media="screen" href="{% static 'templates' %}/3/css/demo.min.css">
+		<link rel="stylesheet" type="text/css" media="screen" href="{% static 'templates' %}/3/css/styles_main.css">
+		<link rel="stylesheet" type="text/css" media="screen" href="{% static 'templates' %}/3/css/jquery.alerts.css">
+
+
+		<!-- FAVICONS -->
+		<link rel="shortcut icon" href="{% static 'templates' %}/3/img/favicon/favicon.ico" type="image/x-icon">
+		<link rel="icon" href="{% static 'templates' %}/3/img/favicon/favicon.ico" type="image/x-icon">
+
+		<!-- GOOGLE FONT -->
+		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,300,400,700">
+
+		<!-- Specifying a Webpage Icon for Web Clip
+			 Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html -->
+		<link rel="apple-touch-icon" href="{% static 'templates' %}/3/img/splash/sptouch-icon-iphone.png">
+		<link rel="apple-touch-icon" sizes="76x76" href="{% static 'templates' %}/3/img/splash/touch-icon-ipad.png">
+		<link rel="apple-touch-icon" sizes="120x120" href="{% static 'templates' %}/3/img/splash/touch-icon-iphone-retina.png">
+		<link rel="apple-touch-icon" sizes="152x152" href="{% static 'templates' %}/3/img/splash/touch-icon-ipad-retina.png">
+
+		<!-- iOS web-app metas : hides Safari UI Components and Changes Status Bar Appearance -->
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<!-- Startup image for web apps -->
+		<link rel="apple-touch-startup-image" href="{% static 'templates' %}/3/img/splash/ipad-landscape.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape)">
+		<link rel="apple-touch-startup-image" href="{% static 'templates' %}/3/img/splash/ipad-portrait.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)">
+		<link rel="apple-touch-startup-image" href="{% static 'templates' %}/3/img/splash/iphone.png" media="screen and (max-device-width: 320px)">
+
+	</head>
+
+
+	<body class="fixed-header fixed-page-footer" style="background:#FCEDFC;">
+
+		<!-- HEADER -->
+		<header id="header">
+			<div id="logo-group">
+
+				<!-- PLACE YOUR LOGO HERE -->
+				<span id="logo"> <img src="{% static 'templates' %}/3/img/logo.png" alt="SmartAdmin"> </span>
+				<!-- END LOGO PLACEHOLDER -->
+
+
+			</div>
+
+			<div  class="header-dropdown-list hidden-sm  hidden-md hidden-xs padding-2">
+					<span class="text-center" style="font-size:large;"> <strong>PRIMERA ENCUESTA VIRTUAL PARA PERSONAS &nbsp; </strong> </span>
+			</div>
+
+			<div  class="header-dropdown-list show-sm show-md show-xs padding-2">
+					<span style="font-size:large"> <strong> LGBTI, &nbsp; </strong>  </span>
+			</div>
+			<div  class="header-dropdown-list hidden-sm hidden-md hidden-xs padding-2">
+					<span style="font-size:large"> <strong> 2017 </strong> </span>
+			</div>
+
+
+			<!-- pulled right: nav area -->
+			<div class="pull-right" >
+
+				<!-- collapse menu button -->
+
+				<div id="hide-menu" class="btn-header pull-right">
+					<span> <a href="javascript:void(0);" data-action="toggleMenu" title="Collapse Menu"><i class="fa fa-reorder"></i></a> </span>
+				</div>
+				<!-- end collapse menu -->
+
+				<!-- #MOBILE -->
+				<!-- Top menu profile link : this shows only when top menu is active -->
+				<ul id="mobile-profile-img" class="header-dropdown-list hidden-xs padding-5">
+					<li class="">
+						<a href="#" class="dropdown-toggle no-margin userdropdown" data-toggle="dropdown">
+							<img src="{% static 'templates' %}/3/img/avatars/sunny.png" alt="John Doe" class="online" />
+						</a>
+						<ul class="dropdown-menu pull-right">
+							<li>
+								<a href="javascript:void(0);" class="padding-10 padding-top-0 padding-bottom-0"><i class="fa fa-cog"></i> Setting</a>
+							</li>
+							<li class="divider"></li>
+							<li>
+								<a href="profile.html" class="padding-10 padding-top-0 padding-bottom-0"> <i class="fa fa-user"></i> <u>P</u>rofile</a>
+							</li>
+							<li class="divider"></li>
+							<li>
+								<a href="javascript:void(0);" class="padding-10 padding-top-0 padding-bottom-0" data-action="toggleShortcut"><i class="fa fa-arrow-down"></i> <u>S</u>hortcut</a>
+							</li>
+							<li class="divider"></li>
+							<li>
+								<a href="javascript:void(0);" class="padding-10 padding-top-0 padding-bottom-0" data-action="launchFullscreen"><i class="fa fa-arrows-alt"></i> Full <u>S</u>creen</a>
+							</li>
+							<li class="divider"></li>
+							<li>
+								<a href="login.html" class="padding-10 padding-top-5 padding-bottom-5" data-action="userLogout"><i class="fa fa-sign-out fa-lg"></i> <strong><u>L</u>ogout</strong></a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+
+				<!-- logout button -->
+				<div id="logout" class="btn-header transparent pull-right">
+					<span> <a href="cerrar_session.ASP" title="Sign Out" data-action="userLogout" data-logout-msg="Puede mejorar aún más su seguridad después de cerrar la sesión cerrando este navegador abierto"><i class="fa fa-sign-out"></i></a> </span>
+				</div>
+				<!-- end logout button -->
+
+				<!-- search mobile button (this is hidden till mobile view port) -->
+				<div id="search-mobile" class="btn-header transparent pull-right">
+					<span> <a href="javascript:void(0)" title="Search"><i class="fa fa-search"></i></a> </span>
+				</div>
+				<!-- end search mobile button -->
+
+
+				<!-- fullscreen button -->
+				<div id="fullscreen" class="btn-header transparent pull-right">
+					<span> <a href="javascript:void(0);" data-action="launchFullscreen" title="Full Screen"><i class="fa fa-arrows-alt"></i></a> </span>
+				</div>
+				<!-- end fullscreen button -->
+
+				<!-- multiple lang dropdown : find all flags in the flags page -->
+				<!--
+				<ul class="header-dropdown-list hidden-xs">
+					<li>
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+						<img src="{% static 'templates' %}/3/img/blank.gif" class="flag flag-es" alt="Spanish">
+						<span> Español </span> <i class="fa fa-angle-down"></i> </a>
+						<ul class="dropdown-menu pull-right">
+							<li class="active">
+								<a href="javascript:void(0);"><img src="{% static 'templates' %}/3/img/blank.gif" class="flag flag-es" alt="Spanish"> Español</a>
+							</li>
+							<li >
+								<a href="javascript:void(0);"><img src="{% static 'templates' %}/3/img/blank.gif" class="flag flag-us" alt="United States"> English (US)</a>
+							</li>
+
+						</ul>
+					</li>
+				</ul>
+				-->
+				<!-- end multiple lang -->
+
+			</div>
+			<!-- end pulled right: nav area -->
+
+		</header>
+		<!-- END HEADER -->
+
+		<!-- Left panel : Navigation area  color url('../img/Gay_flag.png')-->
+		<!-- Note: This width of the aside area can be adjusted through LESS variables -->
+		<aside id="left-panel" style="background:url('{% static 'templates' %}/3/img/Gay_flag.png');background-size: 100%">
+
+			<!-- User info -->
+			<div class="login-info">
+				<span> <!-- User image size is adjusted inside CSS, it should stay as it -->
+
+					<a href="javascript:void(0);" id="show-shortcut" data-action="toggleShortcut">
+						<img src="{% static 'templates' %}/3/img/avatars/sunny.png" alt="me" class="online" />
+						<span class="text-info">
+							<strong>
+							demootin
+							</strong>
+						</span>
+						<i class="fa fa-angle-down"></i>
+					</a>
+
+				</span>
+			</div>
+			<!-- end user info -->
+
+			<!-- NAVIGATION : This navigation is also responsive-->
+			<nav>
+				<!--
+				NOTE: Notice the gaps after each icon usage <i></i>..
+				Please note that these links work a bit different than
+				traditional href="" links. See documentation for details.
+				-->
+
+				<ul>
+					<li class="active">
+						<a href="#" title="Dashboard"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent text-info"><strong>Captura de Datos</strong></span></a>
+						<ul>
+                        <!--
+							<li class="active">
+								<a href="index.html" title="Dashboard"><span class="menu-item-parent">Analytics Dashboard</span></a>
+							</li>
+							<li class="">
+								<a href="dashboard-social.html" title="Dashboard"><span class="menu-item-parent">Social Wall</span></a>
+							</li>
+                            -->
+						</ul>
+					</li>
+
+
+
+					<li class="top-menu-invisible">
+						<a href="#"><i class="fa fa-lg fa-fw fa-cube txt-color-blue"></i> <span class="menu-item-parent">SmartAdmin Intel</span></a>
+						<ul>
+							<li class="">
+								<a href="layouts.html" title="Dashboard"><i class="fa fa-lg fa-fw fa-gear"></i> <span class="menu-item-parent">App Layouts</span></a>
+							</li>
+							<li class="">
+								<a href="skins.html" title="Dashboard"><i class="fa fa-lg fa-fw fa-picture-o"></i> <span class="menu-item-parent">Prebuilt Skins</span></a>
+							</li>
+							<li>
+								<a href="applayout.html"><i class="fa fa-cube"></i> App Settings</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</nav>
+
+
+			<span class="minifyme" data-action="minifyMenu">
+				<i class="fa fa-arrow-circle-left hit"></i>
+			</span>
+
+		</aside>
+		<!-- END NAVIGATION -->
+
+		<!-- MAIN PANEL -->
+		<div id="main" role="main">
+
+
+
+        <!-- MAIN CONTENT -->
+        <div id="content">
+            {% block page %}{% endblock %}
+        </div>
+        <!-- END MAIN CONTENT -->
+
+		</div>
+
+		<!-- END MAIN PANEL -->
+
+		<!-- PAGE FOOTER -->
+		<div class="page-footer">
+			<div class="row">
+				<div class="col-xs-12 col-sm-12 text-center barra-nav-footer">
+					<a class="btn btn-primary border-right pull-left" id="btnanterior_id"
+						name="btnanterior">Anterior</a>
+
+					<input type="button" class="btn btn-primary border-right border-left"
+						id="btnguardar_id" name="btnguardar" value="Guardar"
+						data-loading-text="Guardando, Espere un momento"/>
+					<input type="button" class="btn btn-primary border-left pull-right"
+						id="btnsiguiente_id" name="btnsiguiente" value="Siguiente"
+						data-loading-text="Guardando, Espere un momento"/>
+				</div>
+			</div>
+		</div>
+
+
+		<!--================================================== -->
+
+		<!-- PACE LOADER - turn this on if you want ajax loading to show (caution: uses lots of memory on iDevices)-->
+		<script data-pace-options='{ "restartOnRequestAfter": true }' src="{% static 'templates' %}/3/js/plugin/pace/pace.min.js"></script>
+
+		<!-- Link to Google CDN's jQuery + jQueryUI; fall back to local -->
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+		<script>
+			if (!window.jQuery) {
+				document.write('<script src="js/libs/jquery-2.1.1.min.js"><\/script>');
+			}
+		</script>
+
+		<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+		<script>
+			if (!window.jQuery.ui) {
+				document.write('<script src="js/libs/jquery-ui-1.10.3.min.js"><\/script>');
+			}
+		</script>
+
+		<!-- IMPORTANT: APP CONFIG -->
+		<script src="{% static 'templates' %}/3/js/app.config.js"></script>
+
+		<!-- JS TOUCH : include this plugin for mobile drag / drop touch events-->
+		<script src="{% static 'templates' %}/3/js/plugin/jquery-touch/jquery.ui.touch-punch.min.js"></script>
+
+		<!-- BOOTSTRAP JS -->
+		<script src="{% static 'templates' %}/3/js/bootstrap/bootstrap.min.js"></script>
+
+		<!-- CUSTOM NOTIFICATION -->
+		<script src="{% static 'templates' %}/3/js/notification/SmartNotification.min.js"></script>
+
+		<!-- JARVIS WIDGETS -->
+		<script src="{% static 'templates' %}/3/js/smartwidgets/jarvis.widget.min.js"></script>
+
+		<!-- EASY PIE CHARTS -->
+		<script src="{% static 'templates' %}/3/js/plugin/easy-pie-chart/jquery.easy-pie-chart.min.js"></script>
+
+		<!-- SPARKLINES -->
+		<script src="{% static 'templates' %}/3/js/plugin/sparkline/jquery.sparkline.min.js"></script>
+
+		<!-- JQUERY VALIDATE -->
+		<script src="{% static 'templates' %}/3/js/plugin/jquery-validate/jquery.validate.min.js"></script>
+
+		<!-- JQUERY MASKED INPUT -->
+		<script src="{% static 'templates' %}/3/js/plugin/masked-input/jquery.maskedinput.min.js"></script>
+
+		<!-- JQUERY SELECT2 INPUT -->
+		<script src="{% static 'templates' %}/3/js/plugin/select2/select2.min.js"></script>
+
+		<!-- JQUERY UI + Bootstrap Slider -->
+		<script src="{% static 'templates' %}/3/js/plugin/bootstrap-slider/bootstrap-slider.min.js"></script>
+
+		<!-- browser msie issue fix -->
+		<script src="{% static 'templates' %}/3/js/plugin/msie-fix/jquery.mb.browser.min.js"></script>
+
+		<!-- FastClick: For mobile devices -->
+		<script src="{% static 'templates' %}/3/js/plugin/fastclick/fastclick.min.js"></script>
+
+		<!--[if IE 8]>
+
+		<h1>Your browser is out of date, please update your browser by going to www.microsoft.com/download</h1>
+
+		<![endif]-->
+
+		<!-- Demo purpose only -->
+         <script type="text/javascript" src="{%  static 'custom' %}/js/world.js"></script>
+		<script src="{% static 'templates' %}/3/js/demo.min.js"></script>
+
+		<!-- MAIN APP JS FILE -->
+		<script src="{% static 'templates' %}/3/js/app.min.js"></script>
+
+		<!-- ENHANCEMENT PLUGINS : NOT A REQUIREMENT -->
+		<!-- Voice command : plugin -->
+		<script src="{% static 'templates' %}/3/js/speech/voicecommand.min.js"></script>
+
+
+
+
+
+
+
+		<!-- Full Calendar -->
+		<script src="{% static 'templates' %}/3/js/plugin/moment/moment.min.js"></script>
+		<script src="{% static 'templates' %}/3/js/plugin/fullcalendar/jquery.fullcalendar.min.js"></script>
+		<script src="{% static 'templates' %}/3/js/jquery.alerts.js"></script>
+		<script src="{% static 'templates' %}/3/js/enter_numeric.js"></script>
+		<script src="{% static 'templates' %}/3/js/validar_general.js"></script>
+		<script src="{% static 'templates' %}/3/js/jquery.magnific-popup.min.js"></script>
+        {% block customjs %}{% endblock %}
+	</body>
+</html>

@@ -86,7 +86,7 @@ class Fieldset(models.Model):
 
 
 # Field: Son los campos que se usaran para todos los formularios
-class Field(MetaField):
+class Field(BootstrapFieldMixin, MetaField):
     form = models.ForeignKey(Form, blank=True, null=True)
     fieldset = models.ForeignKey(Fieldset, blank=True, null=True, default=None)
     help_text = models.CharField(max_length=255, default="", blank=True, null=True, verbose_name="Texto de ayuda")

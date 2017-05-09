@@ -54,3 +54,14 @@ class MetaSubfield(models.Model):
     class Meta:
         abstract = True
 
+
+class BootstrapFieldMixin(models.Model):
+    GRID_CHOICES = (
+        ('1', 'col-1'), ('2', 'col-2'), ('3', 'col-3'), ('4', 'col-4'), ('5', 'col-5'), ('6', 'col-6'),
+        ('7', 'col-7'), ('8', 'col-8'), ('9', 'col-9'), ('10', 'col-10'), ('11', 'col-11'), ('12', 'col-12'),
+    )
+    col_md = models.CharField(max_length=2,choices=GRID_CHOICES, blank=True)
+    col_sm = models.CharField(max_length=2, choices=GRID_CHOICES, blank=True)
+
+    class Meta:
+        abstract = True

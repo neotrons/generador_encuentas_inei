@@ -15,6 +15,13 @@ class SurveyView(FormView):
         self.kwargs['form'] = survey.form
         return super(SurveyView, self).get(request, *args, **kwargs)
 
+    def post(self, request, *args, **kwargs):
+        slug = self.kwargs.get('slug')
+        survey = Survey.objects.get(slug=slug)
+        self.kwargs['survey'] = survey
+        self.kwargs['form'] = survey.form
+        return super(SurveyView, self).post(request, *args, **kwargs)
+
     def get_template_names(self):
         survey = self.kwargs.get('survey')
         print(survey)
@@ -45,3 +52,9 @@ class SurveyView(FormView):
         if form_class is None:
             form_class = self.get_form_class()
         return form_class(form=self.kwargs['form'], **self.get_form_kwargs())
+
+
+    def form_valid(self, form):
+        self.form = form
+        formulario = self.kwargs['form']
+        return super(SurveyView, self).form_valid(form)

@@ -16,7 +16,7 @@ class FieldInline(NestedStackedInline):
     extra = 0
     inlines = [OptionsInline]
     fk_name = 'fieldset'
-    fields = ('type', 'required', 'content', 'label',)
+    fields = ('type', 'required', 'col_md', 'col_sm', 'content', 'label',)
 
 class FielsetInline(NestedStackedInline):
     model = Fieldset

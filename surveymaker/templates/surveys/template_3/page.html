@@ -1,0 +1,62 @@
+{% extends 'surveys/template_3/base.html' %}
+{% load staticfiles %}
+{% load poll_extras %}
+{% block page %}
+{% for block in objform.get_all_blocks %}
+<div id="masterr" {% if forloop.counter != 1 %}style="display: none;"{% endif %}>
+    <div class="row">
+        <article class="col-sm-12 col-md-12 col-lg-12">
+            <div class="jarviswidget" id="wid-id-1"
+                data-widget-colorbutton="false" data-widget-editbutton="false"
+                data-widget-custombutton="false">
+                <header>
+                    <!-- Agregar icono -->
+                    <span class="widget-icon"> <i class="fa fa-home"></i> </span>
+                    <h2>{{ block.title }}</h2>
+                </header>
+            </div>
+        </article>
+    </div>
+
+    {% for fieldset in block.get_all_fieldset %}
+    <div class="row form-fielset">
+        {% if  fieldset.show %}
+        <article class="col-sm-12 col-md-12 col-lg-12">
+            <div class="jarviswidget" id="wid-id-1" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-custombutton="false">
+                <header>
+                    <span class="widget-icon "></span><h2>{{ fieldset.title }}</h2>
+                </header>
+
+            </div>
+        </article>
+        {% endif %}
+
+        {% with argfield=formfieldsets|get_item:fieldset.id %}
+            {% for field in argfield %}
+            <article class="col-sm-12 col-md-4 col-lg-4">
+                <div class="jarviswidget" id="wid-id-1"
+                    data-widget-colorbutton="false" data-widget-editbutton="false"
+                    data-widget-custombutton="false">
+                    <div>
+                        <div class="widget-body no-padding">
+                            <div class="smart-form">
+                                <fieldset>
+                                    <section>
+                                        <label class="label">{{ field.label }}</label>
+                                           {{ field }}
+                                        </label>
+                                    </section>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+            {% endfor %}
+        {% endwith %}
+
+    </div>
+    {% endfor %}
+</div>
+{% endfor %}
+{% endblock %}

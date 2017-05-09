@@ -8,7 +8,8 @@ from formbuilds.models import Form
 class Survey(models.Model):
     TEMPLATE_CHOICES = (
         (1, 'Template Default'),
-        (2, 'Template LGTB')
+        (2, 'Template LGTB'),
+        (3, 'Template LGTBv2')
     )
     code = models.CharField(max_length=100)
     title = models.CharField(max_length=255, blank=True, null=True, default="", verbose_name="titulo de Encuesta")

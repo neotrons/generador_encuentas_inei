@@ -48,11 +48,19 @@ class DynamicForm(ModelForm):
                                                             widget=forms.CheckboxSelectMultiple,)
 
             elif field.type == Field.SELECCION or field.type == Field.DEPARTAMENTO or field.type == Field.PROVINCIA or field.type == Field.DISTRITO:
+                custom_class = ''
+                if field.type == Field.DEPARTAMENTO:
+                    custom_class = ' select-departamento'
+                elif field.type == Field.PROVINCIA:
+                    custom_class = ' select-provincia'
+                elif field.type == Field.DISTRITO:
+                    custom_class = ' select-distrito'
+
                 a = []
                 choices = field.option_set.all() if hasattr(field, 'option_set') else field.field.alternative_set.all()
                 for subfield in choices:
                     a.append((subfield.content, subfield.content))  # subfield.label
-                self.fields[id] = forms.ChoiceField(label=field.content, choices=a, widget=forms.Select(attrs={'class': CLASS_FIELD}))
+                self.fields[id] = forms.ChoiceField(label=field.content, choices=a, widget=forms.Select(attrs={'class': CLASS_FIELD+custom_class }))
 
             elif field.type == Field.FILE_UPLOAD:
                 self.fields[id] = forms.FileField(label=field.content,
